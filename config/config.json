@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": "miles",
-    "database": "TrainingScheduler",
-    "host": "127.0.0.1",
+    "username": "ALee",
+    "password": "LA517662*rd",
+    "database": "Training_Scheduler_ALee",
+    "host": "172.31.252.135",
     "dialect": "mysql"
   },
   "test": {
