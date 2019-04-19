@@ -1,7 +1,7 @@
 const Users = require('../models').event;
 const validator = require('validator');
 
-const create = async function (req, res) {
+const createEvent = async function (req, res) {
   res.setHeader('ContentType', 'application/json');
   const body = req.body;
 
@@ -20,19 +20,25 @@ const create = async function (req, res) {
     return ReS(res, user, 201);
   }
 }
-module.exports.create = create;
+module.exports.create = createEvent;
+const updateEvent = async function(req, res) {
+  let err, Event, data;
+  Event = req.Event;
+  data = req.body;
+  Event.set(data);
+  [err, Event] = await to(Event.save());
+  if (err) {
+    if (typeof err == "object" && typeof err.message != "undefined") {
+      err = err.message;
+    }
 
-const createEvent = async function (createEvent) {
-  let err;
-  if (validator.isEmail(userInfo.email)) {
-    [err, user] = await to(Users.create(userInfo));
-    if (err) TE('User already exists with that email');
-    return user;
-  } else {
-    TE('Email is invalid');
+    if (typeof code !== "undefined") res.statusCode = code;
+    res.statusCode = 422;
+    return res.json({ success: false, error: err });
   }
-}
 
+  return res.json(Event);
+};
 module.exports.update = updateEvent;
 const getEvent = async function(req, res) {
   let err, Event;
