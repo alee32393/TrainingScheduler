@@ -40,12 +40,15 @@ export class AuthService {
         lastName: string,
         email: string,
         password: string,
+        phoneNumber:string
+        
       ): Observable<any> {
         const data = {
           first: firstName,
           last: lastName,
           email: email,
           password: password,
+          phoneNumber:phoneNumber,
           userRoleId: 2
         };
         return this.http.post<any>("http://localhost:3000/users", data);

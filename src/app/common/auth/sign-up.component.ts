@@ -12,6 +12,7 @@ export class SignUpComponent{
     lastName = '';
     email = '';
     password = '';
+    phoneNumber = '';
 
     constructor(private authService: AuthService, private router:Router) { }
     signUp():void{
@@ -19,13 +20,15 @@ export class SignUpComponent{
             firstName:this.firstName,
             lastName:this.lastName, 
             email:this.email, 
-            password:this.password, 
+            password:this.password,
+            phoneNumber:this.phoneNumber 
         };
         if (
             newUser.firstName &&
             newUser.lastName &&
             newUser.email &&
-            newUser.password
+            newUser.password &&
+            newUser.phoneNumber
           ) {
             this.authService
               .signup(
@@ -33,6 +36,7 @@ export class SignUpComponent{
                 newUser.lastName,
                 newUser.email,
                 newUser.password,
+                newUser.phoneNumber
               )
               .subscribe(response => {
                 this.router.navigateByUrl("/login");
